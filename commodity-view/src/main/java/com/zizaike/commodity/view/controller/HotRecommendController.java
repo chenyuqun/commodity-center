@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zizaike.core.bean.ResponseResult;
-import com.zizaike.core.framework.exception.ServiceException;
+import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.is.recommend.HotRecommendService;
 
 @Controller
@@ -21,7 +21,7 @@ public class HotRecommendController extends BaseAjaxController {
     private HotRecommendService hotRecommendService;
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult getHotRecommend(HttpServletRequest request) throws ServiceException{
+	public ResponseResult getHotRecommend(HttpServletRequest request) throws ZZKServiceException{
 	    ResponseResult result = new ResponseResult();
 	    result.setInfo(hotRecommendService.quryHotRecommend());
 		return result;

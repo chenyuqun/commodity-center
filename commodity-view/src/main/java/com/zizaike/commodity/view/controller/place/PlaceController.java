@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.zizaike.commodity.view.controller.BaseAjaxController;
 import com.zizaike.core.bean.ResponseResult;
 import com.zizaike.core.framework.exception.IllegalParamterException;
-import com.zizaike.core.framework.exception.ServiceException;
+import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.is.solr.PlaceSolrService;
 
 /**  
@@ -46,7 +46,7 @@ public class PlaceController extends BaseAjaxController {
     private PlaceSolrService placeSolrService;
     @RequestMapping(value = "/{words}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words) throws ServiceException{
+    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words) throws ZZKServiceException{
         ResponseResult result = new ResponseResult();
 //         Pattern pattern = Pattern.compile("[0-9]*");
 //         Matcher isNum = pattern.matcher(words);
@@ -60,7 +60,7 @@ public class PlaceController extends BaseAjaxController {
     
     @RequestMapping(value = "/{words}/{locid}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words,@PathVariable String locid) throws ServiceException{
+    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words,@PathVariable String locid) throws ZZKServiceException{
         ResponseResult result = new ResponseResult();
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(locid);

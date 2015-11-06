@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zizaike.core.bean.ResponseResult;
 import com.zizaike.core.framework.exception.IllegalParamterException;
-import com.zizaike.core.framework.exception.ServiceException;
+import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.is.solr.UserSolrService;
 
 @Controller
@@ -25,7 +25,7 @@ public class UserController extends BaseAjaxController {
     private UserSolrService userSolrService;
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String id) throws ServiceException{
+	public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String id) throws ZZKServiceException{
 	    ResponseResult result = new ResponseResult();
 	     Pattern pattern = Pattern.compile("[0-9]*");
 	     Matcher isNum = pattern.matcher(id);

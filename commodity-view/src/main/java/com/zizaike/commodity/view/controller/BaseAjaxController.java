@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zizaike.core.bean.ResponseResult;
 import com.zizaike.core.framework.exception.IErrorCode;
-import com.zizaike.core.framework.exception.ServiceException;
+import com.zizaike.core.framework.exception.ZZKServiceException;
 
 /**
  * 
@@ -37,9 +37,9 @@ public abstract class BaseAjaxController {
 
         ResponseResult resultBean = new ResponseResult();
 
-        if (ex instanceof ServiceException) {
-            ServiceException ue = (ServiceException) ex;
-            IErrorCode iErrorCode = ((ServiceException) ex).getErrorCode();
+        if (ex instanceof ZZKServiceException) {
+            ZZKServiceException ue = (ZZKServiceException) ex;
+            IErrorCode iErrorCode = ((ZZKServiceException) ex).getErrorCode();
             resultBean.setCode(iErrorCode.getErrorCode());
             resultBean.setMessage(iErrorCode.getErrorMsg());
             if(ue.getDescription() != null){
