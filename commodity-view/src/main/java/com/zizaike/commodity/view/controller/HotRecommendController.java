@@ -1,9 +1,5 @@
 package com.zizaike.commodity.view.controller;
 
-
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +15,12 @@ import com.zizaike.is.recommend.HotRecommendService;
 public class HotRecommendController extends BaseAjaxController {
     @Autowired
     private HotRecommendService hotRecommendService;
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseResult getHotRecommend(HttpServletRequest request) throws ZZKServiceException{
-	    ResponseResult result = new ResponseResult();
-	    result.setInfo(hotRecommendService.quryHotRecommend());
-		return result;
-	}
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult getHotRecommend() throws ZZKServiceException {
+        ResponseResult result = new ResponseResult();
+        result.setInfo(hotRecommendService.quryHotRecommend());
+        return result;
+    }
 }

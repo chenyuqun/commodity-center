@@ -5,16 +5,11 @@
  * Date:2015年11月5日下午4:35:49  <br/>
  * Copyright (c) 2015, zizaike.com All Rights Reserved.  
  *  
-*/  
-
-  
-package com.zizaike.commodity.view.controller.place;  
+ */
+package com.zizaike.commodity.view.controller.place;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,15 +23,16 @@ import com.zizaike.core.framework.exception.IllegalParamterException;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.is.solr.PlaceSolrService;
 
-/**  
- * ClassName:PlaceController <br/>  
- * Function: TODO ADD FUNCTION. <br/>  
- * Reason:   TODO ADD REASON. <br/>  
- * Date:     2015年11月5日 下午4:35:49 <br/>  
- * @author   alex  
- * @version    
- * @since    JDK 1.7  
- * @see        
+/**
+ * ClassName:PlaceController <br/>
+ * Function: 地址关联查询. <br/>
+ * Reason: 地址关联查询. <br/>
+ * Date: 2015年11月5日 下午4:35:49 <br/>
+ * 
+ * @author alex
+ * @version
+ * @since JDK 1.7
+ * @see
  */
 
 @Controller
@@ -44,32 +40,26 @@ import com.zizaike.is.solr.PlaceSolrService;
 public class PlaceController extends BaseAjaxController {
     @Autowired
     private PlaceSolrService placeSolrService;
+
     @RequestMapping(value = "/{words}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words) throws ZZKServiceException{
+    public ResponseResult getAllAddress(@PathVariable String words) throws ZZKServiceException {
         ResponseResult result = new ResponseResult();
-//         Pattern pattern = Pattern.compile("[0-9]*");
-//         Matcher isNum = pattern.matcher(words);
-//         if( !isNum.matches() )
-//         {
-//               throw new IllegalParamterException("id type error");
-//         }
         result.setInfo(placeSolrService.queryPlaceByWords(words));
         return result;
     }
-    
+
     @RequestMapping(value = "/{words}/{locid}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(HttpServletRequest request,@PathVariable String words,@PathVariable String locid) throws ZZKServiceException{
+    public ResponseResult getAllAddress(@PathVariable String words, @PathVariable String locid)
+            throws ZZKServiceException {
         ResponseResult result = new ResponseResult();
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(locid);
-        if( !isNum.matches() )
-        {
-              throw new IllegalParamterException("locid type error");
+        if (!isNum.matches()) {
+            throw new IllegalParamterException("locid type error");
         }
-        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words,Integer.parseInt(locid)));
+        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words, Integer.parseInt(locid)));
         return result;
     }
 }
-  

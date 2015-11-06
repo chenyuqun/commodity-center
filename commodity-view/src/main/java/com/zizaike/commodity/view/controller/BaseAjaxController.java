@@ -19,7 +19,7 @@ import com.zizaike.core.framework.exception.ZZKServiceException;
 /**
  * 
  * ClassName: BaseAjaxController <br/>  
- * Function: TODO ADD FUNCTION. <br/>  
+ * Function: 捕获业务异常. <br/>  
  * Reason: 捕获业务异常. <br/>  
  * date: 2015年10月28日 下午12:00:00 <br/>  
  *  
@@ -29,10 +29,11 @@ import com.zizaike.core.framework.exception.ZZKServiceException;
  */
 public abstract class BaseAjaxController {
 
-    protected final Logger LOG = LoggerFactory.getLogger(getClass());
+    protected  Logger log = LoggerFactory.getLogger(getClass());
 
     @ExceptionHandler
-    public @ResponseBody void handleException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public  void handleException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
         String callback = request.getParameter("callback");
 
         ResponseResult resultBean = new ResponseResult();
@@ -47,10 +48,10 @@ public abstract class BaseAjaxController {
             }else{
                 resultBean.setMessage(iErrorCode.getErrorMsg());
             }
-            LOG.error("ZZKServiceException errorCode={},errorMsg={}", iErrorCode.getErrorCode(),iErrorCode.getErrorMsg());
+            log.error("ZZKServiceException errorCode={},errorMsg={}", iErrorCode.getErrorCode(),iErrorCode.getErrorMsg());
         } else {
-            LOG.error("Exception:", ex);
-            LOG.error("system error ", ex.getCause());
+            log.error("Exception:", ex);
+            log.error("system error ", ex.getCause());
             resultBean.setCode("500");
             resultBean.setMessage(ex.getMessage());
         }
@@ -58,7 +59,7 @@ public abstract class BaseAjaxController {
         try {
             response.getWriter().write(jsonpBuilder(callback, resultBean));
         } catch (IOException e) {
-            LOG.error("IOException ", e);
+            log.error("IOException ", e);
         }
     }
 
