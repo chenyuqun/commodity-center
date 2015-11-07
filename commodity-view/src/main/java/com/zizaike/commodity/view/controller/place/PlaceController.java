@@ -49,17 +49,21 @@ public class PlaceController extends BaseAjaxController {
         return result;
     }
 
-    @RequestMapping(value = "/{words}/{locid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{words}/{destId}/{locid}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(@PathVariable String words, @PathVariable String locid)
+    public ResponseResult getAllAddress(@PathVariable String words, @PathVariable String destId,@PathVariable String locid)
             throws ZZKServiceException {
         ResponseResult result = new ResponseResult();
         Pattern pattern = Pattern.compile("[0-9]*");
-        Matcher isNum = pattern.matcher(locid);
+        Matcher isNum = pattern.matcher(destId);
         if (!isNum.matches()) {
+            throw new IllegalParamterException("destId type error");
+        }
+        Matcher isNum2 = pattern.matcher(locid);
+        if (!isNum2.matches()) {
             throw new IllegalParamterException("locid type error");
         }
-        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words, Integer.parseInt(locid)));
+        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words,Integer.parseInt(destId),Integer.parseInt(locid)));
         return result;
     }
 }
