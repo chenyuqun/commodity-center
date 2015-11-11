@@ -10,11 +10,12 @@ package com.zizaike.commodity.view.controller.place;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zizaike.commodity.view.controller.BaseAjaxController;
@@ -41,18 +42,10 @@ public class PlaceController extends BaseAjaxController {
     @Autowired
     private PlaceSolrService placeSolrService;
 
-    @RequestMapping(value = "/{words}", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseResult getAllAddress(@PathVariable String words) throws ZZKServiceException {
-        ResponseResult result = new ResponseResult();
-        result.setInfo(placeSolrService.queryPlaceByWords(words));
-        return result;
-    }
 
-    @RequestMapping(value = "/{words}/{destId}/{locid}", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getAllAddress(@PathVariable String words, @PathVariable String destId,@PathVariable String locid)
-            throws ZZKServiceException {
+    public ResponseResult getAllAddress(@RequestParam("words") String words,@RequestParam("destId") String destId,@RequestParam("locid") String locid) throws ZZKServiceException {
         ResponseResult result = new ResponseResult();
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(destId);
@@ -63,7 +56,8 @@ public class PlaceController extends BaseAjaxController {
         if (!isNum2.matches()) {
             throw new IllegalParamterException("locid type error");
         }
-        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words,Integer.parseInt(destId),Integer.parseInt(locid)));
+        result.setInfo(placeSolrService.queryPlaceByWordsAndLoc(words, Integer.parseInt(destId),
+                Integer.parseInt(locid)));
         return result;
     }
 }
