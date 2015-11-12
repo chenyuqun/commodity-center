@@ -50,24 +50,15 @@
 		<filters>
             <filter>src/main/resources/${env}</filter>
         </filters> 
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>filters/*</exclude>
-                    <exclude>*.properties</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                     <include>spring/*</include>
-                    <include>${excludePropertyFiles}</include>
-                </includes>
-            </resource>
-        </resources>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>${excludePropertyFiles}</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 
 	<profiles>
@@ -78,7 +69,15 @@
 			</activation>
 			<properties>
 				<env>logback.properties</env>
-				<excludePropertyFiles>logback.xml</excludePropertyFiles>
+				<excludePropertyFiles></excludePropertyFiles>
+			</properties>
+		</profile>
+		<profile>
+		<!-- 正式环境 -->
+			<id>test</id>
+			<properties>
+				<env>logback.properties</env>
+				<excludePropertyFiles>filters/**/*</excludePropertyFiles>
 			</properties>
 		</profile>
 		<profile>
