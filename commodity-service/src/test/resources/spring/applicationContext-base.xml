@@ -22,7 +22,6 @@
 			<list>
 				<value>classpath:/filters/dev.properties</value>
 				<value>file:/data/etc/common/*.properties</value>
-				<value>file:/data/etc/projects/${project.name}.properties</value>
 			</list>
 		</property>
 	</bean>

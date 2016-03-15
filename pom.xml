@@ -24,10 +24,10 @@
         <maven.war.version>2.4</maven.war.version>
         <maven.surefire.version>2.12</maven.surefire.version>
         <maven.findbugs.version>2.5.2</maven.findbugs.version>
-        
-		<zizaike.core.version>1.0.2-RELEASE</zizaike.core.version>
-		<zizaike.entity.version>1.0.2-RELEASE</zizaike.entity.version>
-		<zizaike.is.version>1.0.2-RELEASE</zizaike.is.version>
+
+	  <zizaike.core.version>1.0.5-SNAPSHOT</zizaike.core.version>
+	  <zizaike.entity.version>1.0.9-SNAPSHOT</zizaike.entity.version>
+	  <zizaike.is.version>1.0.8-SNAPSHOT</zizaike.is.version>
 		<!-- Spring -->
 		<org.springframework.version>4.0.2.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
@@ -302,6 +302,11 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.shardbatis</groupId>
+				<artifactId>shardbatis</artifactId>
+				<version>2.0.0B</version>
 			</dependency>
 			<!-- 日志记录依赖包，很多都依赖此包，像log4j,json-lib等等 -->
 			<dependency>
