@@ -56,7 +56,6 @@
                 <filtering>false</filtering>
                 <includes>
                      <include>spring/*</include>
-                     <include>shard_config.xml</include>
                     <include>${includePropertyFiles}</include>
                 </includes>
             </resource>
