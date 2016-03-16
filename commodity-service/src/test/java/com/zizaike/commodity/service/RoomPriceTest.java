@@ -32,11 +32,11 @@ public class RoomPriceTest extends BaseTest {
     @Autowired
     private RoomPriceService roomPriceService;
 
-    @Test(description = "add")
-    public void add() throws ZZKServiceException {
+  @Test(description = "add")
+  public void add() throws ZZKServiceException {
         RoomPrice roomPrice = new RoomPrice();
         roomPrice.setCreateAt(new Date());
-        roomPrice.setRoomTypeId(2);
+        roomPrice.setRoomTypeId(4);
         roomPrice.setPrice(123);
         roomPrice.setCreateUId(123);
         roomPrice.setUpdateAt(new Date());
@@ -46,5 +46,17 @@ public class RoomPriceTest extends BaseTest {
         roomPriceService.add(roomPrice);
 
     }
-
+   @Test(description = "update") 
+    public void update() throws ZZKServiceException {
+        RoomPrice roomPrice = new RoomPrice();
+        roomPrice.setCreateAt(new Date());
+        roomPrice.setRoomTypeId(3);
+        roomPrice.setPrice(125);
+        roomPrice.setCreateUId(123);
+        roomPrice.setUpdateAt(new Date());
+        roomPrice.setUpdateUId(123);
+        roomPrice.setUserId(123);
+        roomPrice.setDate(new Date());
+        roomPriceService.update(roomPrice);
+    }
 }

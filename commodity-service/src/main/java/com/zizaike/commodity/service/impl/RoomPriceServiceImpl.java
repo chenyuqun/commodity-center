@@ -59,6 +59,37 @@ public class RoomPriceServiceImpl implements RoomPriceService{
         roomPriceDao.add(roomPrice); 
         
     }
+    /**  
+     * TODO 更新房价.  
+     * @see com.zizaike.commodity.service.RoomPriceService#update(com.zizaike.entity.commodity.RoomPrice)  
+     */
+    @Override
+    public void update(RoomPrice roomPrice) throws ZZKServiceException {
+        if(roomPrice==null){
+            throw new IllegalParamterException("roomPrice is not null");
+        }
+        if(roomPrice.getRoomTypeId()==null){
+            throw new IllegalParamterException("roomPrice roomTypeId is not null");
+        }
+        if(roomPrice.getDate()==null){
+            throw new IllegalParamterException("roomPrice date is not null");
+        }
+        if(roomPrice.getPrice()==null){
+            throw new IllegalParamterException("roomPrice price is not null");
+        }
+        if(roomPrice.getUserId()==null){
+            throw new IllegalParamterException("roomPrice userId is not null");
+        }
+        if(roomPrice.getCreateUId()==null){
+            throw new IllegalParamterException("roomPrice createUid is not null");
+        }
+        if(roomPrice.getUpdateUId()==null){
+            throw new IllegalParamterException("roomPrice updateUId is not null");
+        }
+        roomPrice.setActive(Active.LIVELY);
+        roomPriceDao.update(roomPrice); 
+        
+    }
     
 }
   

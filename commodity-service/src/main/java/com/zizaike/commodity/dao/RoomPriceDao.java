@@ -33,4 +33,13 @@ public interface RoomPriceDao {
      * @since JDK 1.7
      */
     void add(RoomPrice roomPrice) throws ZZKServiceException;
+    /**
+     * update:更新房价.<br/>
+     * 
+     * @author lin
+     * @param roomPrice
+     * @throws ZZKServiceException
+     * @since JDK 1.7
+     */
+    void update(RoomPrice roomPrice)throws ZZKServiceException;
 }
