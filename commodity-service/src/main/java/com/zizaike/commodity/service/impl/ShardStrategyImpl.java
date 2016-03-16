@@ -5,6 +5,10 @@ import com.zizaike.entity.commodity.RoomPrice;
 
 public class ShardStrategyImpl implements ShardStrategy {
     /**
+     * 分表
+     */
+    private final static Integer TABLE_LEN = 32; 
+    /**
      * 得到实际表名
      * 
      * @param baseTableName 逻辑表名,一般是没有前缀或者是后缀的表名
@@ -17,8 +21,8 @@ public class ShardStrategyImpl implements ShardStrategy {
         if (params != null) {
             if (params instanceof RoomPrice) {
                 RoomPrice roomPrice = (RoomPrice) params;
-                Integer temp = roomPrice.getRoomTypeId();
-                k = temp % 32;
+                Integer temp = roomPrice.getUpdateUId();
+                k = temp % TABLE_LEN;
                 return baseTableName + "_" + k;
             }
         }
