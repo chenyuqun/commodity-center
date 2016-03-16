@@ -37,3 +37,4 @@ public class RoomPriceDaoImpl extends GenericMyIbatisDao<RoomPrice, Integer> imp
 
 }
   
+  
