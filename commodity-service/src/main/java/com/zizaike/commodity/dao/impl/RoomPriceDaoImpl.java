@@ -9,6 +9,8 @@
   
 package com.zizaike.commodity.dao.impl;  
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.zizaike.commodity.dao.RoomPriceDao;
@@ -29,10 +31,8 @@ import com.zizaike.entity.commodity.RoomPrice;
 public class RoomPriceDaoImpl extends GenericMyIbatisDao<RoomPrice, Integer> implements RoomPriceDao {
     private static final String NAMESPACE = "com.zizaike.commodity.dao.RoomPriceMapper." ;
     @Override
-    public void add(RoomPrice roomPrice) throws ZZKServiceException {
-        this.getSqlSession().insert(NAMESPACE+"insertSelective", roomPrice);   
-        
-
+    public void updateBatch(List<RoomPrice> list) throws ZZKServiceException {
+       this.getSqlSession().insert(NAMESPACE+"updateBatch", list);
     }
 
 }
