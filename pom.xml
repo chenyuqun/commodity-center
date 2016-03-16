@@ -59,6 +59,25 @@
             <url>http://nexus.office.zizaike.com/content/repositories/zizaike-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+       <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>zizaike-thirdparty</id>
+            <url>http://nexus.office.zizaike.com/content/repositories/thirdparty/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>zizaike-thirdparty</id>
+            <url>http://nexus.office.zizaike.com/content/repositories/thirdparty/</url>
+        </pluginRepository>
+    </pluginRepositories>
 	<build>
 		<pluginManagement>
 			<plugins>
