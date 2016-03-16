@@ -282,5 +282,10 @@
 	        <artifactId>shardbatis</artifactId>
 	        <version>2.0.0B</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>0.7.0</version>
+		</dependency>
 	</dependencies>
 </project>
