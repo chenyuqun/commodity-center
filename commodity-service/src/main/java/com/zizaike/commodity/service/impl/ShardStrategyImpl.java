@@ -2,6 +2,8 @@ package com.zizaike.commodity.service.impl;
 
 import com.google.code.shardbatis.strategy.ShardStrategy;
 import com.zizaike.entity.commodity.RoomPrice;
+import com.zizaike.entity.commodity.RoomPriceHistory;
+import com.zizaike.entity.commodity.RoomPriceLog;
 
 public class ShardStrategyImpl implements ShardStrategy {
     /**
@@ -21,7 +23,23 @@ public class ShardStrategyImpl implements ShardStrategy {
         if (params != null) {
             if (params instanceof RoomPrice) {
                 RoomPrice roomPrice = (RoomPrice) params;
-                Integer temp = roomPrice.getUpdateUId();
+                Integer temp = roomPrice.getUserId();
+                k = temp % TABLE_LEN;
+                return baseTableName + "_" + k;
+            }
+        }
+        if (params != null) {
+            if (params instanceof RoomPriceLog) {
+                RoomPriceLog roomPriceLog = (RoomPriceLog) params;
+                Integer temp = roomPriceLog.getUserId();
+                k = temp % TABLE_LEN;
+                return baseTableName + "_" + k;
+            }
+        }
+        if (params != null) {
+            if (params instanceof RoomPriceHistory) {
+                RoomPriceHistory roomPriceHistory = (RoomPriceHistory) params;
+                Integer temp = roomPriceHistory.getUserId();
                 k = temp % TABLE_LEN;
                 return baseTableName + "_" + k;
             }
