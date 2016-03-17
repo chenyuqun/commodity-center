@@ -34,5 +34,5 @@ public interface RoomPriceDao {
      * @throws ZZKServiceException  
      * @since JDK 1.7
      */
-    void updateBatch(List<RoomPrice> roomPrice) throws ZZKServiceException;
+    void insertOrUpdate(List<RoomPrice> roomPrice) throws ZZKServiceException;
 }

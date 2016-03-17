@@ -14,9 +14,11 @@ import java.util.List;
 import com.zizaike.is.commodity.RoomPriceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.zizaike.commodity.dao.RoomPriceDao;
+import com.zizaike.commodity.domain.event.RoomPriceApplicationEvent;
 import com.zizaike.core.framework.exception.IllegalParamterException;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.core.framework.mybatis.Active;
@@ -35,8 +37,10 @@ import com.zizaike.entity.commodity.RoomPrice;
 public class RoomPriceServiceImpl implements RoomPriceService {
     @Autowired
     private RoomPriceDao roomPriceDao;
+    @Autowired
+    ApplicationContext applicationContext;
     @Override
-    public void updateBatch(List<RoomPrice> list) throws ZZKServiceException {
+    public void insertOrUpdate(List<RoomPrice> list) throws ZZKServiceException {
         for (RoomPrice roomPrice : list) {
             if(roomPrice==null){
                 throw new IllegalParamterException("roomPrice is not null");
@@ -61,7 +65,8 @@ public class RoomPriceServiceImpl implements RoomPriceService {
             }
             roomPrice.setActive(Active.LIVELY);
         }
-        roomPriceDao.updateBatch(list);
+        roomPriceDao.insertOrUpdate(list);
+        applicationContext.publishEvent(new RoomPriceApplicationEvent(list));
     }
     
 }
