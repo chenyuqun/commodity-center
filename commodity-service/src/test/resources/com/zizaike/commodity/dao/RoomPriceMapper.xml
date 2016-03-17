@@ -164,14 +164,6 @@
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="queryByRoomTypeAndDate" resultMap="BaseResultMap" parameterType="com.zizaike.entity.commodity.RoomPrice" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_room_price
-    where user_id = #{userId,jdbcType=INTEGER}
-   	AND   room_type_id = #{roomTypeId,jdbcType=INTEGER}
-    AND  date = #{date,jdbcType=DATE}
-  </select>
   <update id="insertOrUpdate" parameterType="java.util.List" >
     insert into t_room_price (user_id, room_type_id, 
       date, price, active, create_at, 
@@ -192,4 +184,18 @@
      </foreach>
      ON DUPLICATE KEY UPDATE price = VALUES(price)
   </update>
+  <select id="queryByRoomTypeAndDate" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from t_room_price
+    where active=1
+    AND user_id=#{userId,jdbcType=INTEGER} 
+    AND room_type_id=#{roomTypeId,jdbcType=INTEGER}
+     <if test="start != null" >
+        AND date >= #{start,jdbcType=VARCHAR}
+      </if>
+     <if test="end != null" >
+        AND date >= #{end,jdbcType=VARCHAR}
+      </if>
+  </select>
 </mapper>

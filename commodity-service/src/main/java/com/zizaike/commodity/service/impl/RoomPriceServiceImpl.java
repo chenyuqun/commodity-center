@@ -83,10 +83,25 @@ public class RoomPriceServiceImpl implements RoomPriceService {
         Date date=new Date(System.currentTimeMillis()-1000*60*60*24);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         List<RoomPrice> list=roomPriceDao.getTransferData(df.format(date));
-        LOG.info("测试数据是   {}",list);
+        LOG.info("getTransferData  {}",list);
         roomPriceHistoryDao.transferBatch(list);
-        LOG.info("删除原表数据  {}",list);
+        LOG.info("del Data  {}",list);
         roomPriceDao.deleteTransferData(df.format(date));
+    }
+
+
+    @Override
+    public List<RoomPrice> queryByRoomTypeAndDate(Integer userId, Integer roomTypeId, String start, String end)
+            throws ZZKServiceException {
+          
+        if(userId==null){
+            throw new IllegalParamterException("userId is not null");
+        }
+        if(roomTypeId==null){
+            throw new IllegalParamterException("roomTypeId is not null");
+        }
+         
+        return roomPriceDao.queryByRoomTypeAndDate(userId, roomTypeId, start, end);
     }
 
 }

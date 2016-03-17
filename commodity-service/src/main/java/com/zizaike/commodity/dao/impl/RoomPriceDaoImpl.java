@@ -9,7 +9,10 @@
   
 package com.zizaike.commodity.dao.impl;  
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -43,6 +46,16 @@ public class RoomPriceDaoImpl extends GenericMyIbatisDao<RoomPrice, Integer> imp
     @Override
     public void deleteTransferData(String date) throws ZZKServiceException {
         this.getSqlSession().delete(NAMESPACE+"deleteTransferData",date);
+    }
+
+    @Override
+    public List<RoomPrice> queryByRoomTypeAndDate(Integer userId,Integer roomTypeId, String start, String end) throws ZZKServiceException {
+       Map map = new HashMap<>();
+       map.put("userId", userId);
+       map.put("roomTypeId", roomTypeId);
+       map.put("start", start);
+       map.put("end", end);
+        return this.getSqlSession().selectList(NAMESPACE+"queryByRoomTypeAndDate", map);
     }
 }
   

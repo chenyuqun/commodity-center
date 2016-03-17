@@ -9,10 +9,12 @@
 
 package com.zizaike.commodity.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.core.framework.springext.database.Master;
+import com.zizaike.core.framework.springext.database.Slave;
 import com.zizaike.entity.commodity.RoomPrice;
 
 /**
@@ -56,5 +58,19 @@ public interface RoomPriceDao {
      */
     @Master
     void deleteTransferData(String date) throws ZZKServiceException;
+    /**
+     * 
+     * queryByRoomTypeAndDate:查询房型. <br/>  
+     *  
+     * @author snow.zhang  
+     * @param roomTypeId
+     * @param start
+     * @param end
+     * @return
+     * @throws ZZKServiceException  
+     * @since JDK 1.7
+     */
+    @Slave
+    List<RoomPrice> queryByRoomTypeAndDate(Integer userId,Integer roomTypeId,String start,String end) throws ZZKServiceException;
 
 }

@@ -63,6 +63,11 @@ public class RoomPriceServiceTest extends BaseTest {
         roomPriceService.priceHistoryTransfer();
         System.out.println("Done");
     }
+    @Test(description = "查询房价")
+    public void queryByRoomTypeAndDate() throws  ZZKServiceException{
+        List<RoomPrice> list= roomPriceService.queryByRoomTypeAndDate(1, 1, null, null);
+        System.err.println(list);
+    }
 }
 
 

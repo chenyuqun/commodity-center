@@ -7,6 +7,7 @@
      <!-- <parseList><value>com.zizaike.commodity.dao.RoomPriceMapper.insertSelective</value></parseList> -->
      <ignoreList>
      	<value>com.zizaike.commodity.dao.RoomPriceMapper.insertOrUpdate</value>
+     	<value>com.zizaike.commodity.dao.RoomPriceMapper.queryByRoomTypeAndDate</value>
      </ignoreList>
      <!--  配置分表策略  -->
      <strategy tableName="t_room_price_history" strategyClass="com.zizaike.commodity.service.impl.ShardStrategyImpl"/>

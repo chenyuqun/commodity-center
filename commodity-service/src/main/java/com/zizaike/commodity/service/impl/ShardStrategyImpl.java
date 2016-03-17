@@ -4,6 +4,16 @@ import com.google.code.shardbatis.strategy.ShardStrategy;
 import com.zizaike.entity.commodity.RoomPriceHistory;
 import com.zizaike.entity.commodity.RoomPriceLog;
 
+/**
+ * 
+ * ClassName: ShardStrategyImpl <br/>  
+ * Function: 策略配置. <br/>  
+ * date: 2016年3月17日 下午5:34:58 <br/>  
+ *  
+ * @author snow.zhang  
+ * @version   
+ * @since JDK 1.7
+ */
 public class ShardStrategyImpl implements ShardStrategy {
     /**
      * 分表
