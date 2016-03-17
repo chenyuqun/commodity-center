@@ -43,7 +43,7 @@ public interface RoomPriceDao {
      * @throws ZZKServiceException
      * @since JDK 1.7
      */
-    public List<RoomPrice> getTransferData(String date) throws ZZKServiceException;
+    List<RoomPrice> getTransferData(String date) throws ZZKServiceException;
 
     /**
      * delete

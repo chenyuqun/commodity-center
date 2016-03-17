@@ -13,6 +13,8 @@ import java.util.List;
 
 import com.zizaike.is.commodity.RoomPriceService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -43,6 +45,7 @@ import java.util.List;
  */
 @Service
 public class RoomPriceServiceImpl implements RoomPriceService {
+    protected final Logger LOG = LoggerFactory.getLogger(RoomPriceServiceImpl.class);
     @Autowired
     private RoomPriceDao roomPriceDao;
     @Autowired
@@ -82,14 +85,16 @@ public class RoomPriceServiceImpl implements RoomPriceService {
 
     @Override
     public void priceHistoryTransfer() throws ZZKServiceException {
-        //t_room_price中的当天数据
+        long start = System.currentTimeMillis();
+        //t_room_price中的昨天天数据
+        Date date=new Date(System.currentTimeMillis()-1000*60*60*24);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-        List<RoomPrice> list=roomPriceDao.getTransferData(df.format(new Date()));
+        List<RoomPrice> list=roomPriceDao.getTransferData(df.format(date));
         System.out.println("测试数据是"+list);
         System.out.println("开始插入历史表"+list);
         roomPriceHistoryDao.transferBatch(list);
         System.out.println("删除原表数据"+list);
-        roomPriceDao.deleteTransferData(df.format(new Date()));
+        roomPriceDao.deleteTransferData(df.format(date));
     }
 
 }
