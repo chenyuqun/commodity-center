@@ -1,7 +1,6 @@
 package com.zizaike.commodity.task;
 
-import com.zizaike.commodity.service.RoomPriceService;
-
+import com.zizaike.is.commodity.RoomPriceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

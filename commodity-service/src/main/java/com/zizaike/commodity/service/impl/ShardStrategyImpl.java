@@ -21,14 +21,6 @@ public class ShardStrategyImpl implements ShardStrategy {
     public String getTargetTableName(String baseTableName, Object params, String mapperId) {
         Integer k = 0;
         if (params != null) {
-            if (params instanceof RoomPrice) {
-                RoomPrice roomPrice = (RoomPrice) params;
-                Integer temp = roomPrice.getUserId();
-                k = temp % TABLE_LEN;
-                return baseTableName + "_" + k;
-            }
-        }
-        if (params != null) {
             if (params instanceof RoomPriceLog) {
                 RoomPriceLog roomPriceLog = (RoomPriceLog) params;
                 Integer temp = roomPriceLog.getUserId();
