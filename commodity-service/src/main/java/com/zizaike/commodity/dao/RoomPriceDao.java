@@ -12,6 +12,7 @@ package com.zizaike.commodity.dao;
 import java.util.List;
 
 import com.zizaike.core.framework.exception.ZZKServiceException;
+import com.zizaike.core.framework.springext.database.Master;
 import com.zizaike.entity.commodity.RoomPrice;
 
 /**
@@ -34,5 +35,6 @@ public interface RoomPriceDao {
      * @throws ZZKServiceException  
      * @since JDK 1.7
      */
+    @Master
     void insertOrUpdate(List<RoomPrice> roomPrice) throws ZZKServiceException;
 }

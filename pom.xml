@@ -367,6 +367,13 @@
 				<artifactId>c3p0</artifactId>
 				<version>0.9.1.2</version>
 			</dependency>
+			<!-- druid -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.18</version>
+			</dependency>
+
 			<!-- 下面的三个包是在配置事务的时候用到的 spring的依赖包 -->
 			<dependency>
 				<groupId>org.aspectj</groupId>
