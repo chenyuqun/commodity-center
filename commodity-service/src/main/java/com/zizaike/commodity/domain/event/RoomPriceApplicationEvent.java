@@ -14,7 +14,6 @@ import java.util.List;
 import org.springframework.context.ApplicationEvent;
 
 import com.zizaike.entity.commodity.RoomPrice;
-import com.zizaike.entity.recommend.SearchStatistics;
 
 /**
  * 
@@ -27,8 +26,8 @@ import com.zizaike.entity.recommend.SearchStatistics;
  * @since JDK 1.7
  */
 public class RoomPriceApplicationEvent extends ApplicationEvent {
+    private static final long serialVersionUID = -6594827157066946884L;
 
-    
     public RoomPriceApplicationEvent(List<RoomPrice> list) {
         super(list);  
     }

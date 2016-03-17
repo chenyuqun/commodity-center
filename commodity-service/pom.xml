@@ -1,15 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.zizaike</groupId>
-    <artifactId>zizaike-commodity-center</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>commodity-service</artifactId>
-  <packaging>war</packaging>
-  <name>commodity-serivce</name>
-  <description>自在客商品服务</description>
-<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.zizaike</groupId>
+		<artifactId>zizaike-commodity-center</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>commodity-service</artifactId>
+	<packaging>war</packaging>
+	<name>commodity-serivce</name>
+	<description>自在客商品服务</description>
+	<properties>
 		<project.build.finalname>commodity-service</project.build.finalname>
 	</properties>
 	<build>
@@ -40,26 +41,26 @@
 				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 		</plugins>
-		 <filters>
+		<filters>
 			<filter>src/main/resources/${env}</filter>
 		</filters>
-		  <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>${excludePropertyFiles}</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                     <include>spring/*</include>
-                    <include>${includePropertyFiles}</include>
-                </includes>
-            </resource>
-        </resources>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>${excludePropertyFiles}</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>spring/*</include>
+					<include>${includePropertyFiles}</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<profiles>
@@ -282,14 +283,12 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
-	        <groupId>org.shardbatis</groupId>
-	        <artifactId>shardbatis</artifactId>
-	        <version>2.0.0B</version>
+			<groupId>org.shardbatis</groupId>
+			<artifactId>shardbatis</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.jsqlparser</groupId>
 			<artifactId>jsqlparser</artifactId>
-			<version>0.7.0</version>
 		</dependency>
 	</dependencies>
 </project>

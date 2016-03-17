@@ -1,15 +1,15 @@
 package com.zizaike.commodity.dao.impl;
 
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Repository;
+
 import com.zizaike.commodity.dao.RoomPriceHistoryDao;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.core.framework.mybatis.impl.GenericMyIbatisDao;
 import com.zizaike.entity.commodity.RoomPrice;
 import com.zizaike.entity.commodity.RoomPriceHistory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Project Name: code <br/>

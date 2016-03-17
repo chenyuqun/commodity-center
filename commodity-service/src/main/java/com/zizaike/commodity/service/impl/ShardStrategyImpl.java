@@ -1,7 +1,6 @@
 package com.zizaike.commodity.service.impl;
 
 import com.google.code.shardbatis.strategy.ShardStrategy;
-import com.zizaike.entity.commodity.RoomPrice;
 import com.zizaike.entity.commodity.RoomPriceHistory;
 import com.zizaike.entity.commodity.RoomPriceLog;
 

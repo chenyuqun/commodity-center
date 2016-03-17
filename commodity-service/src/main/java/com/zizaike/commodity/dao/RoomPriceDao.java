@@ -9,7 +9,6 @@
 
 package com.zizaike.commodity.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import com.zizaike.core.framework.exception.ZZKServiceException;
