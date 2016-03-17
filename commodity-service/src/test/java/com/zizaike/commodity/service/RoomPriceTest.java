@@ -39,30 +39,6 @@ public class RoomPriceTest extends BaseTest {
     @Autowired
     private RoomPriceDao roomPriceDao;
 
-    @Test(description = "addOrUpdate")
-    public void addOrUpdate() throws ZZKServiceException {
-        List<RoomPrice> list = new ArrayList<RoomPrice>();
-        for (int i = 0; i < 10; i++) {
-            RoomPrice roomPrice = new RoomPrice();
-            roomPrice.setCreateAt(new Date());
-            roomPrice.setRoomTypeId(1);
-            roomPrice.setPrice(12+i);
-            roomPrice.setCreateUId(123);
-            roomPrice.setUpdateAt(new Date());
-            roomPrice.setUpdateUId(123);
-            roomPrice.setUserId(0);
-            roomPrice.setDate(new Date());
-            //roomPriceService.addOrUpdate(roomPrice);
-            //roomPriceDao.add(roomPrice);
-            list.add(roomPrice);
-        }
-        long start = System.currentTimeMillis();
-        System.err.println("==========");
-        roomPriceService.updateBatch(list);
-        System.err.println(System.currentTimeMillis() - start);
-        
-
-    }
     @Test(description = "updateBatch")
     public void updateBatch() throws ZZKServiceException {
         List<RoomPrice> list = new ArrayList<RoomPrice>();

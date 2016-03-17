@@ -9,20 +9,19 @@
   
 package com.zizaike.commodity.service.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import com.zizaike.is.commodity.RoomPriceService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.zizaike.commodity.dao.RoomPriceDao;
+import com.zizaike.commodity.dao.RoomPriceHistoryDao;
 import com.zizaike.core.framework.exception.IllegalParamterException;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.core.framework.mybatis.Active;
 import com.zizaike.entity.commodity.RoomPrice;
+import com.zizaike.is.commodity.RoomPriceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**  
  * ClassName:RoomPriceServiceImpl <br/>  
@@ -37,6 +36,8 @@ import com.zizaike.entity.commodity.RoomPrice;
 public class RoomPriceServiceImpl implements RoomPriceService {
     @Autowired
     private RoomPriceDao roomPriceDao;
+    @Autowired
+    private RoomPriceHistoryDao roomPriceHistoryDao;
     @Override
     public void updateBatch(List<RoomPrice> list) throws ZZKServiceException {
         for (RoomPrice roomPrice : list) {
@@ -69,12 +70,14 @@ public class RoomPriceServiceImpl implements RoomPriceService {
 
     @Override
     public void priceHistoryTransfer() throws ZZKServiceException {
-            //for(int i=0;i<100;i++){
-                System.out.println("hello world");
-            //}
         //t_room_price中的当天数据
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//        System.out.println(df.format(new Date()));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        List<RoomPrice> list=roomPriceDao.getTransferData(df.format(new Date()));
+        System.out.println("测试数据是"+list);
+        System.out.println("开始插入历史表"+list);
+        roomPriceHistoryDao.transferBatch(list);
+        System.out.println("删除原表数据"+list);
+        roomPriceDao.deleteTransferData(df.format(new Date()));
     }
 
 }

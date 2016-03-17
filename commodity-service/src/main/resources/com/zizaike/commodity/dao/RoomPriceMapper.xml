@@ -192,4 +192,18 @@
      </foreach>
      ON DUPLICATE KEY UPDATE price = VALUES(price)
   </update>
+  <select id="getTransferData" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from t_room_price
+    where date = #{date,jdbcType=VARCHAR}
+    AND active=1
+  </select>
+
+  <delete id="deleteTransferData"  parameterType="java.lang.String" >
+    DELETE
+    from t_room_price
+    where date = #{date,jdbcType=VARCHAR}
+    AND active=1
+  </delete>
 </mapper>
