@@ -57,4 +57,12 @@ public class RoomPriceServiceTest extends BaseTest {
         System.err.println(System.currentTimeMillis() - start);
 
     }
+
+    @Test(description = "测试转移")
+    public void priceHistoryTransfer() throws  ZZKServiceException{
+        roomPriceService.priceHistoryTransfer();
+        System.out.println("Done");
+    }
 }
+
+

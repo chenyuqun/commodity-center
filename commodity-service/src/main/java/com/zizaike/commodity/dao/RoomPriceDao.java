@@ -9,6 +9,7 @@
 
 package com.zizaike.commodity.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.zizaike.core.framework.exception.ZZKServiceException;
@@ -28,13 +29,31 @@ import com.zizaike.entity.commodity.RoomPrice;
 public interface RoomPriceDao {
     /**
      * 
-     * updateBatch:批量更新. <br/>  
-     *  
-     * @author snow.zhang  
+     * updateBatch:批量更新. <br/>
+     *
+     * @author snow.zhang
      * @param roomPrice
-     * @throws ZZKServiceException  
+     * @throws ZZKServiceException
      * @since JDK 1.7
      */
     @Master
     void insertOrUpdate(List<RoomPrice> roomPrice) throws ZZKServiceException;
+    /**
+     * getTransferData:获取要更新的数据. <br/>
+     *
+     * @author alex
+     * @throws ZZKServiceException
+     * @since JDK 1.7
+     */
+    public List<RoomPrice> getTransferData(String date) throws ZZKServiceException;
+
+    /**
+     * delete
+     *
+     * @author alex
+     * @param date
+     * @throws ZZKServiceException
+     */
+    void deleteTransferData(String date) throws ZZKServiceException;
+
 }

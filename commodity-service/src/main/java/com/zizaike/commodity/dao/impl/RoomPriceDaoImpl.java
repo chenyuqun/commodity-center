@@ -9,6 +9,7 @@
   
 package com.zizaike.commodity.dao.impl;  
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,15 @@ public class RoomPriceDaoImpl extends GenericMyIbatisDao<RoomPrice, Integer> imp
        this.getSqlSession().insert(NAMESPACE+"insertOrUpdate", list);
     }
 
+    @Override
+    public List<RoomPrice> getTransferData(String date) throws ZZKServiceException {
+        return this.getSqlSession().selectList(NAMESPACE+"getTransferData", date);
+    }
+
+    @Override
+    public void deleteTransferData(String date) throws ZZKServiceException {
+        this.getSqlSession().delete(NAMESPACE+"deleteTransferData",date);
+    }
 }
   
   

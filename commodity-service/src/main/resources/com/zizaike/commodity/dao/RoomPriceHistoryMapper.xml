@@ -150,4 +150,14 @@
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <insert id="inserintohistory" parameterType="com.zizaike.entity.commodity.RoomPriceHistory" >
+    insert into t_room_price_history ( user_id, room_type_id,
+    date, price, active, create_at,
+    create_u_id, update_u_id, update_at
+    )
+    values ( #{userId,jdbcType=INTEGER}, #{roomTypeId,jdbcType=INTEGER},
+    #{date,jdbcType=DATE}, #{price,jdbcType=INTEGER}, #{active,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP},
+    #{createUId,jdbcType=INTEGER}, #{updateUId,jdbcType=INTEGER}, #{updateAt,jdbcType=TIMESTAMP}
+    )
+  </insert>
 </mapper>
