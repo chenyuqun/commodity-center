@@ -32,8 +32,8 @@ import com.zizaike.entity.commodity.RoomPrice;
 public class RoomPriceDaoImpl extends GenericMyIbatisDao<RoomPrice, Integer> implements RoomPriceDao {
     private static final String NAMESPACE = "com.zizaike.commodity.dao.RoomPriceMapper." ;
     @Override
-    public void updateBatch(List<RoomPrice> list) throws ZZKServiceException {
-       this.getSqlSession().insert(NAMESPACE+"updateBatch", list);
+    public void insertOrUpdate(List<RoomPrice> list) throws ZZKServiceException {
+       this.getSqlSession().insert(NAMESPACE+"insertOrUpdate", list);
     }
 
     @Override

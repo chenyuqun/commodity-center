@@ -18,10 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
 import com.zizaike.commodity.bastest.BaseTest;
-import com.zizaike.commodity.dao.RoomPriceDao;
 import com.zizaike.core.framework.exception.ZZKServiceException;
-import com.zizaike.entity.commodity.RoomPrice;
-import com.zizaike.is.commodity.RoomPriceService;
+import com.zizaike.entity.commodity.RoomPriceLog;
 
 /**
  * ClassName:UserServiceTest <br/>
@@ -33,42 +31,29 @@ import com.zizaike.is.commodity.RoomPriceService;
  * @since JDK 1.7
  * @see
  */
-public class RoomPriceTest extends BaseTest {
+public class RoomPriceLogServiceTest extends BaseTest {
     @Autowired
-    private RoomPriceService roomPriceService;
-    @Autowired
-    private RoomPriceDao roomPriceDao;
+    private RoomPriceLogService roomPriceLogService;
 
-    @Test(description = "updateBatch")
-    public void updateBatch() throws ZZKServiceException {
-        List<RoomPrice> list = new ArrayList<RoomPrice>();
-        for (int i = 0; i < 10; i++) {
-            RoomPrice roomPrice = new RoomPrice();
+    @Test(description = "insertOrUpdate")
+    public void insertOrUpdate() throws ZZKServiceException {
+        List<RoomPriceLog> list = new ArrayList<RoomPriceLog>();
+        for (int i = 0; i < 100; i++) {
+            RoomPriceLog roomPrice = new RoomPriceLog();
             roomPrice.setCreateAt(new Date());
             roomPrice.setRoomTypeId(1);
-            roomPrice.setPrice(12+i);
+            roomPrice.setPrice(12 + i);
             roomPrice.setCreateUId(123);
             roomPrice.setUpdateAt(new Date());
             roomPrice.setUpdateUId(123);
-            roomPrice.setUserId(0);
+            roomPrice.setUserId(0+i);
             roomPrice.setDate(new Date());
-            //roomPriceService.addOrUpdate(roomPrice);
-            //roomPriceDao.add(roomPrice);
             list.add(roomPrice);
         }
         long start = System.currentTimeMillis();
         System.err.println("==========");
-        roomPriceDao.updateBatch(list);
+        roomPriceLogService.insertBatch(list);
         System.err.println(System.currentTimeMillis() - start);
-        
-        
-    }
 
-    @Test(description = "测试转移")
-    public void priceHistoryTransfer() throws  ZZKServiceException{
-        roomPriceService.priceHistoryTransfer();
-        System.out.println("Done");
     }
-
 }
-
