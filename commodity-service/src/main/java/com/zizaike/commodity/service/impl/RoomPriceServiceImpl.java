@@ -7,10 +7,7 @@
  *  
 */  
   
-package com.zizaike.commodity.service.impl;  
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.zizaike.commodity.service.impl;
 
 import com.zizaike.commodity.dao.RoomPriceDao;
 import com.zizaike.commodity.service.RoomPriceService;
@@ -18,6 +15,11 @@ import com.zizaike.core.framework.exception.IllegalParamterException;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.core.framework.mybatis.Active;
 import com.zizaike.entity.commodity.RoomPrice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**  
  * ClassName:RoomPriceServiceImpl <br/>  
@@ -90,6 +92,21 @@ public class RoomPriceServiceImpl implements RoomPriceService{
         roomPriceDao.update(roomPrice); 
         
     }
+
+
+    @Override
+    public void priceHistoryTransfer() throws ZZKServiceException {
+            //for(int i=0;i<100;i++){
+                System.out.println("hello world");
+            //}
+        //t_room_price中的当天数据
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));
+
+
+
+    }
+
     
 }
   

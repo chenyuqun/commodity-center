@@ -42,4 +42,13 @@ public interface RoomPriceService {
      * @since JDK 1.7
      */
     void update(RoomPrice roomPrice) throws ZZKServiceException;
+    /**
+     *
+     * add:转移所有当天的. <br/>
+     *
+     * @author alex
+     * @throws ZZKServiceException
+     * @since JDK 1.7
+     */
+    void priceHistoryTransfer() throws ZZKServiceException;
 }

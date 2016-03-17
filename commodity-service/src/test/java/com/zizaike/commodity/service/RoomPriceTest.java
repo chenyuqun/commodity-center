@@ -59,4 +59,11 @@ public class RoomPriceTest extends BaseTest {
         roomPrice.setDate(new Date());
         roomPriceService.update(roomPrice);
     }
+
+    @Test(description = "测试转移")
+    public void priceHistoryTransfer() throws  ZZKServiceException{
+        roomPriceService.priceHistoryTransfer();
+        System.out.println("Done");
+    }
+
 }
