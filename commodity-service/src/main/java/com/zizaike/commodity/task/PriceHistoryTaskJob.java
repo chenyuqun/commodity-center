@@ -22,8 +22,7 @@ public class PriceHistoryTaskJob {
     @Autowired
     private RoomPriceService roomPriceService;
 
-    //10点之后每分钟执行
-    private static final String TIME = "0 * 14 * * ?";
+    private static final String TIME = "0 30 0 * * ?";
     /**
      *
      * priceHistoryTransfer:数据迁移. <br/>

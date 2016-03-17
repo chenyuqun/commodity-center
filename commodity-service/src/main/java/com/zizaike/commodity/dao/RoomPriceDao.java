@@ -45,7 +45,8 @@ public interface RoomPriceDao {
      * @throws ZZKServiceException
      * @since JDK 1.7
      */
-    public List<RoomPrice> getTransferData(String date) throws ZZKServiceException;
+    @Master
+    List<RoomPrice> getTransferData(String date) throws ZZKServiceException;
 
     /**
      * delete
@@ -54,6 +55,7 @@ public interface RoomPriceDao {
      * @param date
      * @throws ZZKServiceException
      */
+    @Master
     void deleteTransferData(String date) throws ZZKServiceException;
 
 }
