@@ -86,7 +86,6 @@ public class RoomPriceServiceImpl implements RoomPriceService {
         LOG.info("测试数据是   {}",list);
         roomPriceHistoryDao.transferBatch(list);
         LOG.info("删除原表数据  {}",list);
-        roomPriceDao.deleteTransferData(df.format(new Date()));
         roomPriceDao.deleteTransferData(df.format(date));
     }
 
