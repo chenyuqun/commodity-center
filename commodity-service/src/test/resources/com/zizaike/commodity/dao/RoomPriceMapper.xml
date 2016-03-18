@@ -191,11 +191,11 @@
     where active=1
     AND user_id=#{userId,jdbcType=INTEGER} 
     AND room_type_id=#{roomTypeId,jdbcType=INTEGER}
-     <if test="start != null" >
-        AND date >= #{start,jdbcType=VARCHAR}
+    <if test="start != null" >
+     <![CDATA[    AND date >= #{start,jdbcType=VARCHAR} ]]>
       </if>
      <if test="end != null" >
-        AND date >= #{end,jdbcType=VARCHAR}
+     <![CDATA[   AND date <= #{end,jdbcType=VARCHAR} ]]>
       </if>
   </select>
 </mapper>

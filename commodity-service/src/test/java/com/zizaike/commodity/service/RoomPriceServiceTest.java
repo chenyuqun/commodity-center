@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.sound.midi.SysexMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.zizaike.commodity.bastest.BaseTest;
 import com.zizaike.core.framework.exception.ZZKServiceException;
 import com.zizaike.entity.commodity.RoomPrice;
@@ -41,19 +44,19 @@ public class RoomPriceServiceTest extends BaseTest {
         List<RoomPrice> list = new ArrayList<RoomPrice>();
         for (int i = 0; i < 10; i++) {
             RoomPrice roomPrice = new RoomPrice();
-            roomPrice.setCreateAt(new Date());
             roomPrice.setRoomTypeId(1);
             roomPrice.setPrice(12 + i);
             roomPrice.setCreateUId(123);
-            roomPrice.setUpdateAt(new Date());
             roomPrice.setUpdateUId(123);
-            roomPrice.setUserId(0);
+            roomPrice.setUserId(0+i);
             roomPrice.setDate(new Date());
             list.add(roomPrice);
         }
         long start = System.currentTimeMillis();
         System.err.println("==========");
-        roomPriceService.insertOrUpdate(list);
+        String str = JSON.toJSONString(list);
+        System.err.println(str);
+        //roomPriceService.insertOrUpdate(list);
         System.err.println(System.currentTimeMillis() - start);
 
     }
@@ -65,7 +68,7 @@ public class RoomPriceServiceTest extends BaseTest {
     }
     @Test(description = "查询房价")
     public void queryByRoomTypeAndDate() throws  ZZKServiceException{
-        List<RoomPrice> list= roomPriceService.queryByRoomTypeAndDate(1, 1, null, null);
+        List<RoomPrice> list= roomPriceService.queryByRoomTypeAndDate(0, 1, "", null);
         System.err.println(list);
     }
 }

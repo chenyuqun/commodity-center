@@ -12,7 +12,9 @@ package com.zizaike.commodity.service.impl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +72,8 @@ public class RoomPriceServiceImpl implements RoomPriceService {
             if(roomPrice.getUpdateUId()==null){
                 throw new IllegalParamterException("roomPrice updateUId is not null");
             }
+            roomPrice.setCreateAt(new Date());
+            roomPrice.setUpdateAt(new Date());
             roomPrice.setActive(Active.LIVELY);
         }
         roomPriceDao.insertOrUpdate(list);
@@ -93,14 +97,26 @@ public class RoomPriceServiceImpl implements RoomPriceService {
     @Override
     public List<RoomPrice> queryByRoomTypeAndDate(Integer userId, Integer roomTypeId, String start, String end)
             throws ZZKServiceException {
-          
         if(userId==null){
             throw new IllegalParamterException("userId is not null");
         }
         if(roomTypeId==null){
             throw new IllegalParamterException("roomTypeId is not null");
         }
-         
+        if(StringUtils.isEmpty(start)){
+            start = null;
+        }
+        if(StringUtils.isEmpty(end)){
+            end = null;
+        }
+        //日期格式化
+        Pattern idsPattern = Pattern.compile("^(19|20)\\d{2}-[0|1]\\d-[0123]\\d$");
+        if(StringUtils.isNotEmpty(start) && !idsPattern.matcher(start).matches()){
+            throw new IllegalParamterException("start is format error");
+        }
+        if(StringUtils.isNotEmpty(end) && !idsPattern.matcher(end).matches()){
+            throw new IllegalParamterException("end is format error");
+        }
         return roomPriceDao.queryByRoomTypeAndDate(userId, roomTypeId, start, end);
     }
 

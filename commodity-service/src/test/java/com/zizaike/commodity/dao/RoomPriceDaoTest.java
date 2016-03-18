@@ -13,6 +13,8 @@ package com.zizaike.commodity.dao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
@@ -55,6 +57,12 @@ public class RoomPriceDaoTest extends BaseTest {
         roomPriceDao.insertOrUpdate(list);
         System.err.println(System.currentTimeMillis() - start);
 
+    }
+    public static void main(String[] args) {
+       
+        Pattern idsPattern = Pattern.compile("^(19|20)\\d{2}-[0|1]\\d-[0123]\\d$");
+        Matcher matcher = idsPattern.matcher("1988-12-20");
+        System.err.println(matcher.matches());
     }
 
 }

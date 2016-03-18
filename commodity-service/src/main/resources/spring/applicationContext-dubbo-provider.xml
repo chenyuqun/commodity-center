@@ -14,5 +14,8 @@
    <dubbo:consumer timeout="${dubbo.timeout}"/>
    <dubbo:monitor protocol="registry"/>
     
+	    <!-- 房价服务 -->     
+   <dubbo:service interface="com.zizaike.is.commodity.RoomPriceService" version="1.0.0" ref="roomPriceService"  group="${dubbo.group}" />  
+	<bean id="roomPriceService" class="com.zizaike.commodity.service.impl.RoomPriceServiceImpl" />
 	
 </beans>
