@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>commodity-service</artifactId>
 	<packaging>war</packaging>
-	<name>commodity-serivce</name>
+	<name>commodity-service</name>
 	<description>自在客商品服务</description>
 	<properties>
 		<project.build.finalname>commodity-service</project.build.finalname>
