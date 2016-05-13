@@ -41,17 +41,9 @@ public class RoomController extends BaseAjaxController {
         if (!isNum.matches()&&destId!="") {
             throw new IllegalParamterException("destId type error");
         }
-        Matcher isNum2 = pattern.matcher(searchid);
-        if (!isNum2.matches()&&searchid!="") {
-            throw new IllegalParamterException("searchid type error");
-        }
         Matcher isNum3 = pattern.matcher(page);
         if (!isNum3.matches()) {
             throw new IllegalParamterException("page type error");
-        }
-        Matcher isNum4 = pattern.matcher(roomModel);
-        if (!isNum4.matches()&&roomModel!="") {
-            throw new IllegalParamterException("roomModel type error");
         }
         Matcher isNum5 = pattern.matcher(order);
         if (!isNum5.matches()&&order!="") {
