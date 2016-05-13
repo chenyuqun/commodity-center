@@ -33,9 +33,9 @@ public class RoomController extends BaseAjaxController {
     private RoomSolrService roomSolrService;
     @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseResult getSearchResult(@RequestParam("keyWords") String keyWords , @RequestParam("destId") String destId, @RequestParam("searchid") String searchid, @RequestParam("checkInDate") String checkInDate,
-                                          @RequestParam("checkOutDate") String checkOutDate, @RequestParam("searchType") SearchType searchType, @RequestParam("page") String page, @RequestParam("price") String price, @RequestParam("service") String service,
-                                          @RequestParam("roomModel") String roomModel, @RequestParam("order") String order,@RequestParam("multilang") Integer multilang,@RequestParam("multiprice") Integer multiprice) throws ZZKServiceException, UnsupportedEncodingException {
+    public ResponseResult getSearchResult(@RequestParam(value = "keyWords",required = false) String keyWords , @RequestParam(value = "destId",required = false) String destId, @RequestParam("searchid") String searchid, @RequestParam(value = "checkInDate",required = false) String checkInDate,
+                                          @RequestParam(value = "checkOutDate", required = false) String checkOutDate, @RequestParam("searchType") SearchType searchType, @RequestParam(value = "page",required = false) String page, @RequestParam(value = "price",required = false) String price, @RequestParam(value = "service",required = false) String service,
+                                          @RequestParam(value = "roomModel",required = false) String roomModel, @RequestParam("order") String order,@RequestParam("multilang") Integer multilang,@RequestParam("multiprice") Integer multiprice) throws ZZKServiceException, UnsupportedEncodingException {
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(destId);
         if (!isNum.matches()&&destId!="") {
