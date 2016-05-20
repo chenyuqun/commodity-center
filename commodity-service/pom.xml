@@ -265,7 +265,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -289,6 +288,11 @@
 		<dependency>
 			<groupId>net.sf.jsqlparser</groupId>
 			<artifactId>jsqlparser</artifactId>
+	   </dependency>
+        <!-- logstash -->
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
 		</dependency>
 	</dependencies>
 </project>
