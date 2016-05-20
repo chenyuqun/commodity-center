@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE shardingConfig PUBLIC "-//shardbatis.googlecode.com//DTD Shardbatis 2.0//EN"  
+  "http://shardbatis.googlecode.com/dtd/shardbatis-config.dtd">  
+<shardingConfig>  
+     <!-- parseList可选配置  
+             如果配置了parseList,只有在parseList范围内并且不再ignoreList内的sql才会被解析和修改  -->  
+      <!-- <parseList><value>com.zizaike.commodity.dao.RoomPriceMapper.insertSelective</value></parseList> -->
+     	<ignoreList>
+     	<value>com.zizaike.commodity.dao.RoomPriceMapper.insertOrUpdate</value>
+     </ignoreList>
+     <!--  配置分表策略  -->  
+     <strategy tableName="t_room_price_history" strategyClass="com.zizaike.commodity.service.impl.ShardStrategyImpl"/>
+     <strategy tableName="t_room_price_log" strategyClass="com.zizaike.commodity.service.impl.ShardStrategyImpl"/>
+</shardingConfig>  
+
