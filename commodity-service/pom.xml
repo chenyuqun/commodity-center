@@ -12,6 +12,10 @@
 	<description>自在客商品服务</description>
 	<properties>
 		<project.build.finalname>commodity-service</project.build.finalname>
+		
+		<zizaike.core.version>1.0.9-RELEASE</zizaike.core.version>
+		<zizaike.entity.version>1.0.17-RELEASE</zizaike.entity.version>
+		<zizaike.is.version>1.0.17-RELEASE</zizaike.is.version>
 	</properties>
 	<build>
 		<finalName>${project.build.finalname}</finalName>
@@ -100,14 +104,17 @@
 		<dependency>
 			<groupId>com.zizaike</groupId>
 			<artifactId>zizaike-entity</artifactId>
+			<version>${zizaike.entity.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.zizaike</groupId>
 			<artifactId>zizaike-core</artifactId>
+			<version>${zizaike.core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.zizaike</groupId>
 			<artifactId>zizaike-is</artifactId>
+			<version>${zizaike.is.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
