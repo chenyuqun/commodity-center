@@ -19,8 +19,8 @@
 		<project.build.finalname>commodity-view</project.build.finalname>
 		
 		<zizaike.core.version>1.0.9-RELEASE</zizaike.core.version>
-		<zizaike.entity.version>1.0.17-RELEASE</zizaike.entity.version>
-		<zizaike.is.version>1.0.17-RELEASE</zizaike.is.version>
+		<zizaike.entity.version>1.0.18-SNAPSHOT</zizaike.entity.version>
+		<zizaike.is.version>1.0.18-SNAPSHOT</zizaike.is.version>
 		
 	</properties>
 	<build>

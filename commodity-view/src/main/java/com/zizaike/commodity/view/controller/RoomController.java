@@ -86,4 +86,12 @@ public class RoomController extends BaseAjaxController {
         result.setInfo(roomSolrService.searchSolr(searchWordsVo));
         return result;
     }
+
+    @RequestMapping(value = "/solr", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseResult getSearchResult(@RequestParam Integer roomTypeId) throws ZZKServiceException{
+        ResponseResult result = new ResponseResult();
+        result.setInfo(roomSolrService.updateRoomPrice(roomTypeId));
+        return result;
+    }
 }
