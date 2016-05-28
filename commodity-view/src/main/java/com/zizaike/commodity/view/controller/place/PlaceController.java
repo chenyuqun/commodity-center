@@ -49,7 +49,6 @@ public class PlaceController extends BaseAjaxController {
     public ResponseResult getAllAddress(@RequestParam("words") String words,@RequestParam("destId") String destId,@RequestParam("locid") String locid) throws ZZKServiceException, UnsupportedEncodingException {
         ResponseResult result = new ResponseResult();
         Pattern pattern = Pattern.compile("[0-9]*");
-        words = new String(words.getBytes("ISO-8859-1"),"UTF-8");
         Matcher isNum = pattern.matcher(destId);
         if (!isNum.matches()) {
             throw new IllegalParamterException("destId type error");
